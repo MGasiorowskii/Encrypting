@@ -1,16 +1,38 @@
-# This is a sample Python script.
+class Manager:
+    def __init__(self) -> None:
+        self.show_menu()
+        self.get_and_execute_choice()
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    def show_menu(self) -> None:
+        """ Function print menu of potential options"""
+
+        menu = """
+        5. Exit
+        """
+        print(menu)
+
+    def get_and_execute_choice(self) -> None:
+        """Function get from user information which operation he is interested and execute it
+
+        In case of choice the value out of scope show message
+
+        Work in loop until user chose option exit()
+        """
+        user_choice = int(input("Choose what you want do: "))
+        choices = {
+            5: exit()
+        }
+        if user_choice in choices:
+            choices.get(user_choice)
+        else:
+            print("Inccorect Value - Try again")
+
+        self.start()
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def main():
+    Manager()
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    main()
