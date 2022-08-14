@@ -1,21 +1,29 @@
 class Manager:
     def __init__(self):
         self.show_menu()
-        self.get_choice_from_user()
+        self.get_and_execute_choice()
 
     def show_menu(self):
         menu = """
-        1. Encrypt word
         5. Exit
         """
         print(menu)
 
-    def get_choice_from_user(self):
-        return int(input("Choose what you want do: "))
+    def get_and_execute_choice(self):
+        user_choice = int(input("Choose what you want do: "))
+        choices = {
+            5: exit()
+        }
+        if user_choice in choices:
+            choices.get(user_choice)
+        else:
+            print("Inccorect Value - Try again")
+
+        self.start()
 
 
 def main():
-    init = Manager()
+    Manager()
 
 
 if __name__ == "__main__":
