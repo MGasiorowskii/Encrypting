@@ -18,7 +18,7 @@ class Encrypter:
         """Get from user key to encrypting"""
         return int(input("Input key to encrypting: "))
 
-    def encytping_text(self) -> str:
+    def encrypting_text(self) -> str:
         encrypted_txt = ""
 
         for letter in self.sentence:
