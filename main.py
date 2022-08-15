@@ -3,7 +3,7 @@ class Manager:
 
     def __init__(self) -> None:
         self.choices = {
-            5: quit()
+            5: self.quit
         }
         self.initialize()
 
@@ -26,9 +26,17 @@ class Manager:
         In case of choice the value out of scope show message
         """
         user_choice = int(input("Choose what you want do: "))
-        self.choices.get(user_choice, "Incorrect Value - Try again")
+        self.choices.get(user_choice, self.show_error)()
 
         self.initialize()
+
+    def show_error(self) -> None:
+        """Show error message"""
+        print("Incorrect Value - Try again")
+
+    def quit(self) -> None:
+        """Exit from loop"""
+        exit()
 
 
 def main():
