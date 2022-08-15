@@ -1,5 +1,5 @@
-import class_Encrypter
 from class_Encrypter import Encrypter
+from class_Decrypter import Decrypter
 
 
 class Manager:
@@ -8,6 +8,7 @@ class Manager:
     def __init__(self) -> None:
         self.choices = {
             1: Encrypter,
+            2: Decrypter,
             5: self.quit
         }
         self.initialize()
@@ -22,6 +23,7 @@ class Manager:
 
         menu = """
         1. Encrypt the sentence
+        2. Decrypt the sentence
         5. Exit
         """
         print(menu)
