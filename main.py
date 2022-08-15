@@ -1,3 +1,6 @@
+import class_Encrypter
+
+
 class Manager:
     """Representing a menu which is used to chose and execute other functions"""
 
@@ -7,7 +10,7 @@ class Manager:
         }
         self.initialize()
 
-    def initialize(self):
+    def initialize(self) -> None:
         """Initialize loop"""
         self.show_menu()
         self.get_and_execute_choice()
