@@ -1,10 +1,19 @@
 class Manager:
+    """Representing a menu which is used to chose and execute other functions"""
+
     def __init__(self) -> None:
+        self.choices = {
+            5: quit()
+        }
+        self.initialize()
+
+    def initialize(self):
+        """Initialize loop"""
         self.show_menu()
         self.get_and_execute_choice()
 
     def show_menu(self) -> None:
-        """ Function print menu of potential options"""
+        """Print menu of potential options"""
 
         menu = """
         5. Exit
@@ -12,22 +21,14 @@ class Manager:
         print(menu)
 
     def get_and_execute_choice(self) -> None:
-        """Function get from user information which operation he is interested and execute it
+        """Get from user information which operation he is interested and execute it
 
         In case of choice the value out of scope show message
-
-        Work in loop until user chose option exit()
         """
         user_choice = int(input("Choose what you want do: "))
-        choices = {
-            5: exit()
-        }
-        if user_choice in choices:
-            choices.get(user_choice)
-        else:
-            print("Inccorect Value - Try again")
+        self.choices.get(user_choice, "Incorrect Value - Try again")
 
-        self.start()
+        self.initialize()
 
 
 def main():
