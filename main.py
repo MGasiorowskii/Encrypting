@@ -1,4 +1,5 @@
 import class_Encrypter
+from class_Encrypter import Encrypter
 
 
 class Manager:
@@ -6,6 +7,7 @@ class Manager:
 
     def __init__(self) -> None:
         self.choices = {
+            1: Encrypter,
             5: self.quit
         }
         self.initialize()
@@ -19,6 +21,7 @@ class Manager:
         """Print menu of potential options"""
 
         menu = """
+        1. Encrypt the sentence
         5. Exit
         """
         print(menu)

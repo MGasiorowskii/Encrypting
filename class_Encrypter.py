@@ -8,6 +8,7 @@ class Encrypter:
         self.sentence = self.get_string_to_encrypt().upper()
         self.key = self.get_key()
         self.translated_sentence = self.encytping_text()
+        print(self.translated_sentence)
 
     def get_string_to_encrypt(self) -> str:
         """Get form user string to encrypting"""
