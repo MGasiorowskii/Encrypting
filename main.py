@@ -1,13 +1,18 @@
+import class_Encrypter
+from class_Encrypter import Encrypter
+
+
 class Manager:
     """Representing a menu which is used to chose and execute other functions"""
 
     def __init__(self) -> None:
         self.choices = {
+            1: Encrypter,
             5: self.quit
         }
         self.initialize()
 
-    def initialize(self):
+    def initialize(self) -> None:
         """Initialize loop"""
         self.show_menu()
         self.get_and_execute_choice()
@@ -16,6 +21,7 @@ class Manager:
         """Print menu of potential options"""
 
         menu = """
+        1. Encrypt the sentence
         5. Exit
         """
         print(menu)
