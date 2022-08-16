@@ -49,8 +49,8 @@ class Manager:
 
     def encrypt_txt(self) -> None:
         """Initialize class Encrypter and save result to list"""
-        Encrypter
-        self.results.append(Encrypter.get_last_result())
+        encrypter = Encrypter()
+        self.results.append(encrypter.get_last_result())
 
 
 def main():

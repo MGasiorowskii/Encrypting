@@ -5,13 +5,6 @@ OFFSET = 26
 class Encrypter:
     """Represents a class used to encrypt a file using the Caesar cipher"""
     def __init__(self) -> None:
-        self.last_result = {
-            "Operation": None,
-            "Key": None,
-            "Original_txt": None,
-            "Encrypted_txt": None
-        }
-
         self.original_sentence = self.get_string_to_encrypt().upper()
         self.key = self.get_key()
         self.encrypted_sentence = self.encrypting_text()
@@ -38,13 +31,11 @@ class Encrypter:
 
     def get_last_result(self) -> dict[str, str or int]:
         """Return result of last operation"""
-        self.last_result = {
+        last_result = {
             "Operation": "Encrypting",
             "Key": self.key,
             "Original_txt": self.original_sentence,
             "Encrypted_txt": self.encrypted_sentence
         }
 
-        return self.last_result
-
-
+        return last_result
