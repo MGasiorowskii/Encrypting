@@ -6,9 +6,11 @@ class Manager:
     """Representing a menu which is used to chose and execute other functions"""
 
     def __init__(self) -> None:
+        self.results = []
         self.choices = {
-            1: Encrypter,
-            2: Decrypter,
+            1: self.encrypt_txt,
+            2: self.decrypt_txt,
+            3: self.print_results,
             5: self.quit
         }
         self.initialize()
@@ -24,6 +26,7 @@ class Manager:
         menu = """
         1. Encrypt the sentence
         2. Decrypt the sentence
+        3. Show results of operations
         5. Exit
         """
         print(menu)
@@ -45,6 +48,28 @@ class Manager:
     def quit(self) -> None:
         """Exit from loop"""
         exit()
+
+    def encrypt_txt(self) -> None:
+        """Initialize class Encrypter and save result to list"""
+        encrypter = Encrypter()
+        self.results.append(encrypter.get_last_result())
+
+    def decrypt_txt(self) -> None:
+        """Initialize class Decrypter and save result to list"""
+        decrypter = Decrypter()
+        self.results.append(decrypter.get_last_result())
+
+    def print_results(self) -> None:
+        """Print the results of all operations"""
+        if not self.results:
+            print("No data in memory")
+            return
+
+        for result in self.results:
+            for key, value in zip(result.keys(), result.values()):
+                print(f"{key}: {value}")
+
+            print()
 
 
 def main():
