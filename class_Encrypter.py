@@ -1,6 +1,3 @@
-from typing import Union
-
-
 LAST_LETTER = 90
 OFFSET = 26
 

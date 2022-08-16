@@ -6,8 +6,9 @@ class Manager:
     """Representing a menu which is used to chose and execute other functions"""
 
     def __init__(self) -> None:
+        self.results = []
         self.choices = {
-            1: Encrypter,
+            1: self.encrypt_txt,
             2: Decrypter,
             5: self.quit
         }
@@ -45,6 +46,11 @@ class Manager:
     def quit(self) -> None:
         """Exit from loop"""
         exit()
+
+    def encrypt_txt(self) -> None:
+        """Initialize class Encrypter and save result to list"""
+        Encrypter
+        self.results.append(Encrypter.get_last_result())
 
 
 def main():
