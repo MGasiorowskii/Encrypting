@@ -21,7 +21,7 @@ class Decrypter:
     def decrypting_text(self) -> str:
         decrypted_txt = ""
 
-        for letter in self.original_sentenc:
+        for letter in self.original_sentence:
             if ord(letter) - self.key >= FIRST_LETTER:
                 decrypted_txt += chr(ord(letter) - self.key)
             else:
@@ -32,7 +32,7 @@ class Decrypter:
     def get_last_result(self) -> dict[str, str or int]:
         """Return result of last operation"""
         last_result = {
-            "Operation": "Encrypting",
+            "Operation": "Decrypting",
             "Key": self.key,
             "Original_txt": self.original_sentence,
             "Encrypted_txt": self.decrypted_sentence
