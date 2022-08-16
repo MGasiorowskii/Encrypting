@@ -9,7 +9,7 @@ class Manager:
         self.results = []
         self.choices = {
             1: self.encrypt_txt,
-            2: Decrypter,
+            2: self.decrypt_txt,
             5: self.quit
         }
         self.initialize()
@@ -51,6 +51,11 @@ class Manager:
         """Initialize class Encrypter and save result to list"""
         encrypter = Encrypter()
         self.results.append(encrypter.get_last_result())
+
+    def decrypt_txt(self) -> None:
+        """Initialize class Decrypter and save result to list"""
+        decrypter = Decrypter()
+        self.results.append(decrypter.get_last_result())
 
 
 def main():
