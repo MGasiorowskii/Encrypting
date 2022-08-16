@@ -10,6 +10,7 @@ class Manager:
         self.choices = {
             1: self.encrypt_txt,
             2: self.decrypt_txt,
+            3: self.print_results,
             5: self.quit
         }
         self.initialize()
@@ -25,6 +26,7 @@ class Manager:
         menu = """
         1. Encrypt the sentence
         2. Decrypt the sentence
+        3. Show results of operations
         5. Exit
         """
         print(menu)
@@ -56,6 +58,18 @@ class Manager:
         """Initialize class Decrypter and save result to list"""
         decrypter = Decrypter()
         self.results.append(decrypter.get_last_result())
+
+    def print_results(self) -> None:
+        """Print the results of all operations"""
+        if not self.results:
+            print("No data in memory")
+            return
+
+        for result in self.results:
+            for key, value in result:
+                print(f"{key}: {value}")
+
+            print()
 
 
 def main():
