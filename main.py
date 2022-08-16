@@ -66,7 +66,7 @@ class Manager:
             return
 
         for result in self.results:
-            for key, value in result:
+            for key, value in zip(result.keys(), result.values()):
                 print(f"{key}: {value}")
 
             print()
