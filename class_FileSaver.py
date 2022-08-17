@@ -24,7 +24,7 @@ class FileSaver:
 
         for result in self.results:
             for key, value in zip(result.keys(), result.values()):
-                content += f"{key}: {value}\t"
+                content += f"{key}: {value}    "
 
             content += "\n"
 
