@@ -12,7 +12,7 @@ class FileSaver:
 
     def create_file_name(self) -> str:
         """Create and return file name"""
-        return f"Results_{self.time}"
+        return f"Results_{self.time}.txt"
 
     def create_content(self) -> str:
         """Create and return the content to save"""
@@ -29,7 +29,7 @@ class FileSaver:
 
         return content
 
-    def save_to_file(self):
-        pass
-
-
+    def save_to_file(self) -> None:
+        """Save content to file"""
+        with open(self.file_name, "w", encoding="utf-8") as file:
+            file.writelines(self.content)
