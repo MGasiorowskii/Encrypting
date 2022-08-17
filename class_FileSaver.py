@@ -9,6 +9,7 @@ class FileSaver:
         self.file_name = self.create_file_name()
         self.content = self.create_content()
         self.save_to_file()
+        self.show_message()
 
     def create_file_name(self) -> str:
         """Create and return file name"""
@@ -23,7 +24,7 @@ class FileSaver:
 
         for result in self.results:
             for key, value in zip(result.keys(), result.values()):
-                content += f"{key}: {value}\t",
+                content += f"{key}: {value}\t"
 
             content += "\n"
 
@@ -33,3 +34,7 @@ class FileSaver:
         """Save content to file"""
         with open(self.file_name, "w", encoding="utf-8") as file:
             file.writelines(self.content)
+
+    def show_message(self) -> None:
+        """Print the message after saving to file"""
+        print(f"Datas has been send to file {self.file_name}")

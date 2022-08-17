@@ -76,7 +76,7 @@ class Manager:
 
     def save_results(self) -> None:
         """Initialize class FileSaver"""
-        FileSaver()
+        FileSaver(self.results)
 
 
 def main():
