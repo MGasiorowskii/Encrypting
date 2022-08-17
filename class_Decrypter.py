@@ -35,7 +35,7 @@ class Decrypter:
             "Operation": "Decrypting",
             "Key": self.key,
             "Original_txt": self.original_sentence,
-            "Encrypted_txt": self.decrypted_sentence
+            "Decrypted_txt": self.decrypted_sentence
         }
 
         return last_result
