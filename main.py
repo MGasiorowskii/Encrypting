@@ -1,5 +1,6 @@
 from class_Encrypter import Encrypter
 from class_Decrypter import Decrypter
+from class_FileSaver import FileSaver
 
 
 class Manager:
@@ -11,6 +12,7 @@ class Manager:
             1: self.encrypt_txt,
             2: self.decrypt_txt,
             3: self.print_results,
+            4: self.save_results,
             5: self.quit
         }
         self.initialize()
@@ -27,6 +29,7 @@ class Manager:
         1. Encrypt the sentence
         2. Decrypt the sentence
         3. Show results of operations
+        4. Save results to file
         5. Exit
         """
         print(menu)
@@ -70,6 +73,10 @@ class Manager:
                 print(f"{key}: {value}")
 
             print()
+
+    def save_results(self) -> None:
+        """Initialize class FileSaver"""
+        FileSaver()
 
 
 def main():
