@@ -65,6 +65,8 @@ class Manager:
 
     def print_results(self) -> None:
         """Print the results of all operations"""
+        print("Results of operations:\n")
+
         if not self.results:
             print("No data in memory")
             return

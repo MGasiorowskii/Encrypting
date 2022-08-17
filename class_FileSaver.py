@@ -37,4 +37,4 @@ class FileSaver:
 
     def show_message(self) -> None:
         """Print the message after saving to file"""
-        print(f"Datas has been send to file {self.file_name}")
+        print(f"Datas has been saved to file {self.file_name}")
