@@ -50,6 +50,7 @@ class Manager:
 
     def quit(self) -> None:
         """Exit from loop"""
+        print("\nHave a nice day!")
         exit()
 
     def encrypt_txt(self) -> None:
