@@ -8,7 +8,7 @@ class Decrypter:
         self.original_sentence = self.get_string_to_decrypt().upper()
         self.key = self.get_key()
         self.decrypted_sentence = self.decrypting_text()
-        print(self.decrypted_sentence)
+        print(f"Decrypted sentence: {self.decrypted_sentence}")
 
     def get_string_to_decrypt(self) -> str:
         """Get form user string to decrypting"""
@@ -35,7 +35,7 @@ class Decrypter:
             "Operation": "Decrypting",
             "Key": self.key,
             "Original_txt": self.original_sentence,
-            "Encrypted_txt": self.decrypted_sentence
+            "Decrypted_txt": self.decrypted_sentence
         }
 
         return last_result

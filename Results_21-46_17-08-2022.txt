@@ -1,0 +1,2 @@
+Operation: Encrypting    Key: 2    Original_txt: ABCD    Encrypted_txt: CDEF    
+Operation: Decrypting    Key: 2    Original_txt: ABCD    Encrypted_txt: YZAB    
