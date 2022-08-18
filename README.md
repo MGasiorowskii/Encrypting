@@ -1,13 +1,47 @@
-1. project
-glwony wzoerzec fasada, drugi wzorzec mozliwy do uzycia factor y
-2. encrypt/decrypt text form Rot47/rot13 -> Szyf cezara wikipieda 
-3. zapisywanie zaszyforwnaego tekstu do pliku
-4. odczytywania zaszyfrowanego tesktu do pliku {"Rot47": "qweqw"}
-5. wyspiywanie zaszyfrowanych slow z pamieci komputera buffer lista ktora zyje tylko podczas dzialnai 
-6. exit menu ogolne 
-7. manager -> Ktora zarzadza classa 
-8. main.py ktora odpala program
+# Cesar cypher encrypter/decrypter
 
-tipy :
-typing, docstring, podzial na pliki, formatowanie zgodnie z zasadami PEP8 (plugin BLACK)(pip install black) black <nazwa_pliku.py> 
-pushowanie czeste comity githubflow/gitflow i merge requesty 
+This is script used to encrypt/decrypt sentence by Cesar cypher
+
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#roadmap">Roadmap</a> •
+</p>
+
+
+## Key Features
+`Program pattern: Facade`
+
+* Encrypt/Decrypt input text
+* Save the results of all operations to file since start
+* Show the results of all operations since start
+* Read encrypted texts from file
+* Typing
+* Docstrings
+* Format PEP8
+
+## How To Use
+
+To clone and run this application, you'll need [Git](https://git-scm.com) installed on your computer. From your command line:
+
+```bash
+# Clone this repository
+$ git clone https://github.com/MGasiorowskii/Encrypting
+
+# Go into the repository
+$ cd Encrypting
+
+# Run the app
+$ py -3.9 main.py
+```
+
+## Roadmap
+
+- [x] Encrypt text
+- [x] Decrypt text
+- [x] Save the results of all operations to file since start
+- [x] Show the results of all operations since start
+- [ ] Read encrypted texts from file
+
+> e-mail [gasiorowskii.mateusz@gmail.com](gasiorowskii.mateusz@gmail.com) &nbsp;&middot;&nbsp;
+> GitHub [@MGasiorowskii](https://github.com/MGasiorowskii) &nbsp;&middot;&nbsp;
