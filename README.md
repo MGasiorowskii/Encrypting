@@ -16,6 +16,7 @@ This is script used to encrypt/decrypt sentence by Cesar cypher
 * Save the results of all operations to file since start
 * Show the results of all operations since start
 * Read encrypted texts from file
+* Unit tests
 * Typing
 * Docstrings
 * Format PEP8
@@ -42,6 +43,7 @@ $ py -3.9 main.py
 - [x] Save the results of all operations to file since start
 - [x] Show the results of all operations since start
 - [ ] Read encrypted texts from file
+- [ ] Unit tests
 
 > e-mail [gasiorowskii.mateusz@gmail.com](gasiorowskii.mateusz@gmail.com) &nbsp;&middot;&nbsp;
 > GitHub [@MGasiorowskii](https://github.com/MGasiorowskii) &nbsp;&middot;&nbsp;
