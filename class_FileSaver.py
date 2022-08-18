@@ -1,6 +1,6 @@
 import time
 
-
+#TODO refactor FilesServer na metody statyczne, zeby nie tworzyc obiektu FileSaver, Zamiast normalnemgo pliku JSON*,
 class FileSaver:
     """Represents a class used to save results to file"""
     def __init__(self, results: list) -> None:
@@ -32,8 +32,12 @@ class FileSaver:
 
     def save_to_file(self) -> None:
         """Save content to file"""
+        choice = input("Czy chcesz zachować buffer? (Y/n)")
         with open(self.file_name, "w", encoding="utf-8") as file:
             file.writelines(self.content)
+        #TODO obsluga usuwania buffera gdy uzytkownik poprosi
+        if choice.lower() == 'y':
+            pass
 
     def show_message(self) -> None:
         """Print the message after saving to file"""

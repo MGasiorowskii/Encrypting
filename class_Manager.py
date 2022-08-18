@@ -5,9 +5,11 @@ from class_FileSaver import FileSaver
 
 class Manager:
     """Representing a menu which is used to chose and execute other functions"""
+    #TODO wydzielić results do nowego buffera.
+    results = []
 
     def __init__(self) -> None:
-        self.results = []
+        self.__is_running = True
         self.choices = {
             1: self.encrypt_txt,
             2: self.decrypt_txt,
@@ -19,12 +21,13 @@ class Manager:
 
     def initialize(self) -> None:
         """Initialize loop"""
-        self.show_menu()
-        self.get_and_execute_choice()
+        while self.__is_running:
+            self.show_menu()
+            self.get_and_execute_choice()
 
     def show_menu(self) -> None:
         """Print menu of potential options"""
-
+        #TODO spróbuj sformatować tego stringa.
         menu = """
         1. Encrypt the sentence
         2. Decrypt the sentence
@@ -42,26 +45,28 @@ class Manager:
         user_choice = int(input("Choose what you want do: "))
         self.choices.get(user_choice, self.show_error)()
 
-        self.initialize()
-
     def show_error(self) -> None:
         """Show error message"""
-        print("Incorrect Value - Try again")
+        print("Incorrect choice - Try again")
 
     def quit(self) -> None:
         """Exit from loop"""
+        if self.results != 0:
+            choice = input("You have not saved date in buffer do you want save it? (y/n)")
+            if choice.lower() == 'y':
+                return
         print("\nHave a nice day!")
-        exit()
+        self.__is_running = False
 
     def encrypt_txt(self) -> None:
         """Initialize class Encrypter and save result to list"""
-        encrypter = Encrypter()
-        self.results.append(encrypter.get_last_result())
+        result = Encrypter.encrypt()
+        Manager.results.append(result)
 
     def decrypt_txt(self) -> None:
         """Initialize class Decrypter and save result to list"""
         decrypter = Decrypter()
-        self.results.append(decrypter.get_last_result())
+        Manager.results.append(decrypter.get_last_result())
 
     def print_results(self) -> None:
         """Print the results of all operations"""
@@ -71,12 +76,12 @@ class Manager:
             print("No data in memory")
             return
 
-        for result in self.results:
-            for key, value in zip(result.keys(), result.values()):
+        for result in Manager.results:
+            for key, value in result.items():
                 print(f"{key}: {value}")
 
             print()
 
     def save_results(self) -> None:
         """Initialize class FileSaver"""
-        FileSaver(self.results)
+        FileSaver(Manager.results)

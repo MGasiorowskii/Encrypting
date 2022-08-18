@@ -1,7 +1,7 @@
 FIRST_LETTER = 65
 OFFSET = 26
 
-
+#TODO refactor jak encrypotra
 class Decrypter:
     """Represents a class used to decrypt a file using the Caesar cipher"""
     def __init__(self) -> None:

@@ -1,4 +1,4 @@
-# Cesar cypher encrypter/decrypter
+ # Cesar cypher encrypter/decrypter
 
 This is script used to encrypt/decrypt sentence by Cesar cypher
 
