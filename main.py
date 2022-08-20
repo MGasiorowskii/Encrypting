@@ -1,4 +1,4 @@
-from class_Manager import Manager
+from manager import Manager
 
 #TODO zmiana nazw plików według konwencji pep8
 def main():
