@@ -1,4 +1,5 @@
 import utilities
+from utilities import buffer
 from encrypter import Encrypter
 from decrypter import Decrypter
 from fileSaver import FileSaver
@@ -7,13 +8,6 @@ from fileSaver import FileSaver
 class Manager:
     """Representing a menu which is used to chose and execute other functions"""
     #TODO wydzielić results do nowego buffera.
-    results = []
-    data_struct = {
-            "Operation": "Decrypting",
-            "Key": self.key,
-            "Original_txt": self.original_sentence,
-            "Decrypted_txt": self.decrypted_sentence
-        }
 
     def __init__(self) -> None:
         self.__is_running = True
@@ -88,18 +82,17 @@ class Manager:
 
     def print_results(self) -> None:
         """Print the results of all operations"""
-        print("Results of operations:\n")
-
-        if not self.results:
-            print("No data in memory")
+        if utilities.if_buffer_empty():
             return
 
-        for result in Manager.results:
+        print("Results of operations:\n")
+
+        for result in buffer:
             for key, value in result.items():
                 print(f"{key}: {value}")
 
             print()
 
     def save_results(self) -> None:
-        """Initialize class FileSaver"""
+        """Initialize saving the results of operations from buffer"""
         FileSaver(Manager.results)

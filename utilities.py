@@ -1,4 +1,3 @@
-import json
 from typing import Union
 
 
@@ -33,3 +32,10 @@ def buffer_cleaning() -> None:
     user_choice = input("Do you want clear the buffer? (Y/n): ")
     if user_choice.lower() == 'y':
         buffer.clear()
+
+
+def if_buffer_empty() -> bool:
+    """Return the status of buffer and print message"""
+    if not buffer:
+        print("No data in memory")
+        return True

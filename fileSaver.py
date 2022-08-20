@@ -1,6 +1,7 @@
 import time
 import json
-from utilities import buffer, buffer_cleaning
+import utilities
+from utilities import buffer
 
 
 class FileSaver:
@@ -17,14 +18,12 @@ class FileSaver:
         """Create and return the content to save"""
         content = ""
 
-        if not buffer:
-            return "No data in memory"
+        if not utilities.if_buffer_empty():
+            for result in buffer:
+                for key, value in zip(result.items()):
+                    content += f"{key}: {value}    "
 
-        for result in buffer:
-            for key, value in zip(result.items()):
-                content += f"{key}: {value}    "
-
-            content += "\n"
+                content += "\n"
 
         return content
 
@@ -34,7 +33,7 @@ class FileSaver:
         with open(file_name, "w", encoding="utf-8") as outfile:
             json.dump(content, outfile)
 
-    buffer_cleaning()
+    utilities.buffer_cleaning()
 
     @staticmethod
     def show_message(file_name: str) -> None:
