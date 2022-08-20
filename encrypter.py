@@ -10,7 +10,7 @@ class Encrypter:
         """Return encrypted sentence with shift according to Cesar cipher"""
         encrypted_sentence = ""
 
-        for letter in original_sentence:
+        for letter in original_sentence.upper():
             if ord(letter) + shift <= LAST_LETTER:
                 encrypted_sentence += chr(ord(letter) + shift)
             else:

@@ -68,12 +68,11 @@ class Manager:
         original_sentence = utilities.get_string(operation_name)
         shift = utilities.get_shift(operation_name)
         encrypted_sentence = Encrypter.encrypting(original_sentence, shift)
+        print(f"Encrypted sentence: {encrypted_sentence}")
 
-        result = utilities.get_last_result(operation_name, shift, original_sentence)
+        result = utilities.get_last_result(operation_name, shift, original_sentence, encrypted_sentence)
         buffer.append(result)
         utilities.buffer_cleaning()
-
-        print(f"Encrypted sentence: {encrypted_sentence}")
 
     def decrypt_sentence(self) -> None:
         """Initialize decrypting and save result to buffer"""
@@ -82,11 +81,11 @@ class Manager:
         shift = utilities.get_shift(operation_name)
         decrypted_sentence = Decrypter.decrypting(original_sentence, shift)
 
-        result = utilities.get_last_result(operation_name, shift, original_sentence)
+        print(f"Decrypted sentence: {decrypted_sentence}")
+
+        result = utilities.get_last_result(operation_name, shift, original_sentence, decrypted_sentence)
         buffer.append(result)
         utilities.buffer_cleaning()
-
-        print(f"Decrypted sentence: {decrypted_sentence}")
 
     def print_results(self) -> None:
         """Print the results of all operations"""
@@ -103,7 +102,11 @@ class Manager:
 
     def save_buffer_to_file(self) -> None:
         """Initialize saving the results of operations from buffer"""
+        if utilities.if_buffer_empty():
+            return
+
         file_name = FileSaver.create_file_name()
         content = FileSaver.create_content()
         FileSaver.save_to_file(file_name, content)
         FileSaver.show_message(file_name)
+        utilities.buffer_cleaning()

@@ -14,16 +14,12 @@ class FileSaver:
         return f"Results_{time_of_creating}.json"
 
     @staticmethod
-    def create_content() -> str:
+    def create_content() -> dict:
         """Create and return the content to save"""
-        content = ""
+        content = {"Results": []}
 
         if not utilities.if_buffer_empty():
-            for result in buffer:
-                for key, value in zip(result.items()):
-                    content += f"{key}: {value}    "
-
-                content += "\n"
+            content["Results"] = buffer
 
         return content
 
@@ -32,8 +28,6 @@ class FileSaver:
         """Save content to file in json format and ask user about cleaning buffer"""
         with open(file_name, "w", encoding="utf-8") as outfile:
             json.dump(content, outfile)
-
-        utilities.buffer_cleaning()
 
     @staticmethod
     def show_message(file_name: str) -> None:

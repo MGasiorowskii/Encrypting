@@ -10,7 +10,7 @@ class Decrypter:
         """Return decrypted sentence with shift according to Cesar cipher"""
         decrypted_sentence = ""
 
-        for letter in original_sentence:
+        for letter in original_sentence.upper():
             if ord(letter) - shift >= FIRST_LETTER:
                 decrypted_sentence += chr(ord(letter) - shift)
             else:
