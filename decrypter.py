@@ -7,6 +7,7 @@ class Decrypter:
 
     @staticmethod
     def decrypting(original_sentence: str, shift: int) -> str:
+        """Return decrypted sentence with shift according to Cesar cipher"""
         decrypted_sentence = ""
 
         for letter in original_sentence:

@@ -29,11 +29,11 @@ class Manager:
         """Print menu of potential options"""
 
         menu = """
-1. Encrypt the sentence
-2. Decrypt the sentence
-3. Show results of operations
-4. Save results to file
-5. Exit
+    1. Encrypt the sentence
+    2. Decrypt the sentence
+    3. Show results of operations
+    4. Save results to file
+    5. Exit
         """
         print(menu)
 
@@ -69,6 +69,10 @@ class Manager:
         shift = utilities.get_shift(operation_name)
         encrypted_sentence = Encrypter.encrypting(original_sentence, shift)
 
+        result = utilities.get_last_result(operation_name, shift, original_sentence)
+        buffer.append(result)
+        utilities.buffer_cleaning()
+
         print(f"Encrypted sentence: {encrypted_sentence}")
 
     def decrypt_sentence(self) -> None:
@@ -77,6 +81,10 @@ class Manager:
         original_sentence = utilities.get_string(operation_name)
         shift = utilities.get_shift(operation_name)
         decrypted_sentence = Decrypter.decrypting(original_sentence, shift)
+
+        result = utilities.get_last_result(operation_name, shift, original_sentence)
+        buffer.append(result)
+        utilities.buffer_cleaning()
 
         print(f"Decrypted sentence: {decrypted_sentence}")
 

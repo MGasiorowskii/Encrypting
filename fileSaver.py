@@ -33,7 +33,7 @@ class FileSaver:
         with open(file_name, "w", encoding="utf-8") as outfile:
             json.dump(content, outfile)
 
-    utilities.buffer_cleaning()
+        utilities.buffer_cleaning()
 
     @staticmethod
     def show_message(file_name: str) -> None:
