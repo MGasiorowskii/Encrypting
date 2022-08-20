@@ -39,3 +39,5 @@ def if_buffer_empty() -> bool:
     if not buffer:
         print("No data in memory")
         return True
+    else:
+        return False

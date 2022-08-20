@@ -7,15 +7,14 @@ from fileSaver import FileSaver
 
 class Manager:
     """Representing a menu which is used to chose and execute other functions"""
-    #TODO wydzielić results do nowego buffera.
 
     def __init__(self) -> None:
         self.__is_running = True
         self.choices = {
             1: self.encrypt_sentence,
-            2: self.decrypt__sentence,
+            2: self.decrypt_sentence,
             3: self.print_results,
-            4: self.save_results,
+            4: self.save_buffer_to_file,
             5: self.quit
         }
         self.initialize()
@@ -55,10 +54,11 @@ class Manager:
 
         If buffer isn't empty ask user about saving data before quit
         """
-        if self.results != 0:
-            choice = input("You have not saved date in buffer do you want save it? (y/n)")
+        if not utilities.if_buffer_empty():
+            choice = input("You have not saved date in buffer do you want save it? (Y/n)")
             if choice.lower() == 'y':
                 return
+
         print("\nHave a nice day!")
         self.__is_running = False
 
@@ -93,6 +93,9 @@ class Manager:
 
             print()
 
-    def save_results(self) -> None:
+    def save_buffer_to_file(self) -> None:
         """Initialize saving the results of operations from buffer"""
-        FileSaver(Manager.results)
+        file_name = FileSaver.create_file_name()
+        content = FileSaver.create_content()
+        FileSaver.save_to_file(file_name, content)
+        FileSaver.show_message(file_name)
