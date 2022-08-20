@@ -45,5 +45,5 @@ $ py -3.9 main.py
 - [ ] Read encrypted texts from file
 - [ ] Unit tests
 
-> e-mail [gasiorowskii.mateusz@gmail.com](mailto: gasiorowskii.mateusz@gmail.com) &nbsp;&middot;&nbsp;
+> e-mail [gasiorowskii.mateusz@gmail.com](mailto:gasiorowskii.mateusz@gmail.com) &nbsp;&middot;&nbsp;
 > GitHub [@MGasiorowskii](https://github.com/MGasiorowskii) &nbsp;&middot;&nbsp;
