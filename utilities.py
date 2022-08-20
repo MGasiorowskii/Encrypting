@@ -9,7 +9,7 @@ def get_string(operation_name: str) -> str:
 
 def get_shift(operation_name: str) -> int:
     """Get from user value of shift"""
-    return int(input(f"Input key to {operation_name}: "))
+    return int(input(f"Input shift to {operation_name}: "))
 
 
 def get_last_result(operation_name: str, shift: int, original_sentence: str, new_sentence: str)\

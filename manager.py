@@ -12,7 +12,7 @@ class Manager:
     def __init__(self) -> None:
         self.__is_running = True
         self.choices = {
-            1: self.encrypt_sentence(),
+            1: self.encrypt_sentence,
             2: self.decrypt_txt,
             3: self.print_results,
             4: self.save_results,
