@@ -19,12 +19,20 @@ class FileSaver:
         content = {"Results": []}
 
         if not utilities.if_buffer_empty():
-            content["Results"] = buffer
+            if FileSaver.if_save_all_information():
+                content["Results"] = buffer
+
+            else:
+                crypto_txt = []
+                for result in buffer:
+                    crypto_txt.append(result["New_sentence"])
+
+                content["Results"] = crypto_txt
 
         return content
 
     @staticmethod
-    def save_to_file(file_name: str, content: str) -> None:
+    def save_to_file(file_name: str, content: dict) -> None:
         """Save content to file in json format and ask user about cleaning buffer"""
         with open(file_name, "w", encoding="utf-8") as outfile:
             json.dump(content, outfile)
@@ -33,3 +41,12 @@ class FileSaver:
     def show_message(file_name: str) -> None:
         """Print the message after saving to file"""
         print(f"Datas has been saved to file {file_name}")
+
+    @staticmethod
+    def if_save_all_information() -> bool:
+        """Ask user to save all information or only encrypted/decrypted sentence"""
+        user_choice = input("Do you want save all information? (Y/n): ")
+        if user_choice.lower() == 'y':
+            return True
+        else:
+            return False
