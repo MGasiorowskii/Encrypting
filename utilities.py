@@ -7,8 +7,8 @@ def get_string(operation_name: str) -> str:
     return input(f"Input sentence to {operation_name}: ")
 
 
-def get_key(operation_name: str) -> int:
-    """Get from user key"""
+def get_shift(operation_name: str) -> int:
+    """Get from user value of shift"""
     return int(input(f"Input key to {operation_name}: "))
 
 

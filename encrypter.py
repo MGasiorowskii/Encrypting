@@ -6,7 +6,7 @@ class Encrypter:
     """Represents a class used to encrypt a file using the Caesar cipher"""
 
     @staticmethod
-    def encrypting_sentence(original_sentence: str, shift: int) -> str:
+    def encrypting(original_sentence: str, shift: int) -> str:
         """Return encrypted sentence with shift according to Cesar cipher"""
         encrypted_sentence = ""
 

@@ -1,6 +1,7 @@
-from class_Encrypter import Encrypter
-from class_Decrypter import Decrypter
-from class_FileSaver import FileSaver
+import utilities
+from encrypter import Encrypter
+from decrypter import Decrypter
+from fileSaver import FileSaver
 
 
 class Manager:
@@ -11,7 +12,7 @@ class Manager:
     def __init__(self) -> None:
         self.__is_running = True
         self.choices = {
-            1: self.encrypt_txt,
+            1: self.encrypt_sentence(),
             2: self.decrypt_txt,
             3: self.print_results,
             4: self.save_results,
@@ -29,11 +30,11 @@ class Manager:
         """Print menu of potential options"""
         #TODO spróbuj sformatować tego stringa.
         menu = """
-        1. Encrypt the sentence
-        2. Decrypt the sentence
-        3. Show results of operations
-        4. Save results to file
-        5. Exit
+1. Encrypt the sentence
+2. Decrypt the sentence
+3. Show results of operations
+4. Save results to file
+5. Exit
         """
         print(menu)
 
@@ -50,7 +51,10 @@ class Manager:
         print("Incorrect choice - Try again")
 
     def quit(self) -> None:
-        """Exit from loop"""
+        """Exit from loop.
+
+        If buffer isn't empty ask user about saving data before quit
+        """
         if self.results != 0:
             choice = input("You have not saved date in buffer do you want save it? (y/n)")
             if choice.lower() == 'y':
@@ -58,10 +62,14 @@ class Manager:
         print("\nHave a nice day!")
         self.__is_running = False
 
-    def encrypt_txt(self) -> None:
-        """Initialize class Encrypter and save result to list"""
-        result = Encrypter.encrypt()
-        Manager.results.append(result)
+    def encrypt_sentence(self) -> None:
+        """Initialize encrypting and save result to buffer"""
+        operation_name = "Encrypting"
+        original_sentence = utilities.get_string(operation_name)
+        shift = utilities.get_shift(operation_name)
+        encrypted_sentence = Encrypter.encrypting(original_sentence, shift)
+
+        print(f"Encrypted sentence: {encrypted_sentence}")
 
     def decrypt_txt(self) -> None:
         """Initialize class Decrypter and save result to list"""
