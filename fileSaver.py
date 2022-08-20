@@ -1,44 +1,42 @@
 import time
+import json
+from utilities import buffer, buffer_cleaning
 
-#TODO refactor FilesServer na metody statyczne, zeby nie tworzyc obiektu FileSaver, Zamiast normalnemgo pliku JSON*,
+
 class FileSaver:
     """Represents a class used to save results to file"""
-    def __init__(self, results: list) -> None:
-        self.results = results
-        self.time = time.strftime("%H-%M_%d-%m-%Y", time.localtime())
-        self.file_name = self.create_file_name()
-        self.content = self.create_content()
-        self.save_to_file()
-        self.show_message()
 
-    def create_file_name(self) -> str:
-        """Create and return file name"""
-        return f"Results_{self.time}.txt"
+    @staticmethod
+    def create_file_name() -> str:
+        """Create and return file name in json format"""
+        time_of_creating = time.strftime("%H-%M_%d-%m-%Y", time.localtime())
+        return f"Results_{time_of_creating}.json"
 
-    def create_content(self) -> str:
+    @staticmethod
+    def create_content() -> str:
         """Create and return the content to save"""
         content = ""
 
-        if not self.results:
+        if not buffer:
             return "No data in memory"
 
-        for result in self.results:
-            for key, value in zip(result.keys(), result.values()):
+        for result in buffer:
+            for key, value in zip(result.items()):
                 content += f"{key}: {value}    "
 
             content += "\n"
 
         return content
 
-    def save_to_file(self) -> None:
-        """Save content to file"""
-        choice = input("Czy chcesz zachować buffer? (Y/n)")
-        with open(self.file_name, "w", encoding="utf-8") as file:
-            file.writelines(self.content)
-        #TODO obsluga usuwania buffera gdy uzytkownik poprosi
-        if choice.lower() == 'y':
-            pass
+    @staticmethod
+    def save_to_file(file_name: str, content: str) -> None:
+        """Save content to file in json format and ask user about cleaning buffer"""
+        with open(file_name, "w", encoding="utf-8") as outfile:
+            json.dump(content, outfile)
 
-    def show_message(self) -> None:
+    buffer_cleaning()
+
+    @staticmethod
+    def show_message(file_name: str) -> None:
         """Print the message after saving to file"""
-        print(f"Datas has been saved to file {self.file_name}")
+        print(f"Datas has been saved to file {file_name}")

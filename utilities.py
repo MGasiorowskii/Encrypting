@@ -2,6 +2,9 @@ import json
 from typing import Union
 
 
+buffer = []
+
+
 def get_string(operation_name: str) -> str:
     """Get from user string"""
     return input(f"Input sentence to {operation_name}: ")
@@ -23,3 +26,10 @@ def get_last_result(operation_name: str, shift: int, original_sentence: str, new
     }
 
     return last_result
+
+
+def buffer_cleaning() -> None:
+    """Ask user to execute buffer cleaning"""
+    user_choice = input("Do you want clear the buffer? (Y/n): ")
+    if user_choice.lower() == 'y':
+        buffer.clear()
