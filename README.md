@@ -13,8 +13,9 @@ This is script used to encrypt/decrypt sentence by Cesar cypher
 `Program pattern: Facade`
 
 * Encrypt/Decrypt input text
-* Save the results of all operations to file since start
-* Show the results of all operations since start
+* Save the results of all operations in buffer to file in JSON format
+* Show the results of all operations in buffer
+* Clear the buffer with results of operations
 * Read encrypted texts from file
 * Unit tests
 * Typing
@@ -40,8 +41,9 @@ $ py -3.9 main.py
 
 - [x] Encrypt text
 - [x] Decrypt text
-- [x] Save the results of all operations to file since start
-- [x] Show the results of all operations since start
+- [x] Save the results of all operations in buffer to JSON file
+- [x] Show the results of all operations in buffer
+- [x] Clear the buffer with results of operations
 - [ ] Read encrypted texts from file
 - [ ] Unit tests
 
