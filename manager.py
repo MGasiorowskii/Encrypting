@@ -35,7 +35,7 @@ class Manager:
     2. Decrypt the sentence
     3. Show results of operations
     4. Save results to file
-    5. Decrypt data from file
+    5. Decrypt data from json file
     6. Exit
         """
         print(menu)

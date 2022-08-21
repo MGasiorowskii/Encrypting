@@ -10,9 +10,10 @@ class FileReader:
         """Get from user file name to decrypt"""
         return input("Input the file name: ")
 
-    def show_error(self, file_name: str) -> None:
+    @staticmethod
+    def show_error(file_name: str) -> None:
         """Print the error message if file doesn't exist"""
-        print(f"File {file_name} doesn't exist")
+        print(f"File {file_name} doesn't exist - Try again")
 
     @staticmethod
     def read_file(file_name: str) -> Union[dict, int]:
@@ -21,7 +22,7 @@ class FileReader:
         If file doesn't exist show error_message
         """
         try:
-            with open("data.json") as file:
+            with open(file_name) as file:
                 content = json.load(file)
 
         except FileNotFoundError:
