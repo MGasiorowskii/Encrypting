@@ -3,6 +3,7 @@ from utilities import buffer
 from encrypter import Encrypter
 from decrypter import Decrypter
 from fileSaver import FileSaver
+from fileReader import FileReader
 
 
 class Manager:
@@ -114,4 +115,17 @@ class Manager:
         utilities.buffer_cleaning()
 
     def decrypt_data_from_file(self) -> None:
-        pass
+        """Initialize reading data from json file and save the result to buffer"""
+        operation_name = "Decrypting from file"
+        file_name = FileReader.get_file_name()
+        content_from_file = FileReader.read_file(file_name)
+        if content_from_file == -1:
+            return
+
+        shift, encrypted_sentence = content_from_file.values()
+        decrypted_sentence = Decrypter.decrypting(encrypted_sentence, shift)
+        print(f"Decrypted sentence from file: {decrypted_sentence}")
+
+        result = utilities.create_result_structure(operation_name, shift, encrypted_sentence, decrypted_sentence)
+        buffer.append(result)
+        utilities.buffer_cleaning()

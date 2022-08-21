@@ -10,8 +10,7 @@ class FileReader:
         """Get from user file name to decrypt"""
         return input("Input the file name: ")
 
-    @staticmethod
-    def show_error(file_name: str) -> None:
+    def show_error(self, file_name: str) -> None:
         """Print the error message if file doesn't exist"""
         print(f"File {file_name} doesn't exist")
 
