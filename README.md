@@ -16,7 +16,7 @@ This is script used to encrypt/decrypt sentence by Cesar cypher
 * Save the results of all operations in buffer to file in JSON format
 * Show the results of all operations in buffer
 * Clear the buffer with results of operations
-* Read encrypted texts from file
+* Read encrypted texts from json file
 * Unit tests
 * Typing
 * Docstrings
@@ -44,7 +44,7 @@ $ py -3.9 main.py
 - [x] Save the results of all operations in buffer to JSON file
 - [x] Show the results of all operations in buffer
 - [x] Clear the buffer with results of operations
-- [ ] Read encrypted texts from file
+- [x] Read encrypted texts from file
 - [ ] Unit tests
 
 > e-mail [gasiorowskii.mateusz@gmail.com](mailto:gasiorowskii.mateusz@gmail.com) &nbsp;&middot;&nbsp;
