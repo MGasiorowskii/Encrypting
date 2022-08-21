@@ -70,7 +70,7 @@ class Manager:
         encrypted_sentence = Encrypter.encrypting(original_sentence, shift)
         print(f"Encrypted sentence: {encrypted_sentence}")
 
-        result = utilities.get_last_result(operation_name, shift, original_sentence, encrypted_sentence)
+        result = utilities.create_result_structure(operation_name, shift, original_sentence, encrypted_sentence)
         buffer.append(result)
         utilities.buffer_cleaning()
 
@@ -83,7 +83,7 @@ class Manager:
 
         print(f"Decrypted sentence: {decrypted_sentence}")
 
-        result = utilities.get_last_result(operation_name, shift, original_sentence, decrypted_sentence)
+        result = utilities.create_result_structure(operation_name, shift, original_sentence, decrypted_sentence)
         buffer.append(result)
         utilities.buffer_cleaning()
 
