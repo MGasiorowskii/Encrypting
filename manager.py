@@ -15,7 +15,8 @@ class Manager:
             2: self.decrypt_sentence,
             3: self.print_results,
             4: self.save_buffer_to_file,
-            5: self.quit
+            5: self.decrypt_data_from_file,
+            6: self.quit
         }
         self.initialize()
 
@@ -33,7 +34,8 @@ class Manager:
     2. Decrypt the sentence
     3. Show results of operations
     4. Save results to file
-    5. Exit
+    5. Decrypt data from file
+    6. Exit
         """
         print(menu)
 
@@ -110,3 +112,6 @@ class Manager:
         FileSaver.save_to_file(file_name, content)
         FileSaver.show_message(file_name)
         utilities.buffer_cleaning()
+
+    def decrypt_data_from_file(self) -> None:
+        pass

@@ -7,7 +7,7 @@ class FileReader:
 
     @staticmethod
     def get_file_name() -> str:
-        """Get from user file name to encrypt"""
+        """Get from user file name to decrypt"""
         return input("Input the file name: ")
 
     @staticmethod
@@ -30,6 +30,3 @@ class FileReader:
             return -1
 
         return content
-
-
-
