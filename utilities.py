@@ -6,7 +6,7 @@ buffer = []
 
 def get_string(operation_name: str) -> str:
     """Get from user string"""
-    return input(f"Input sentence to {operation_name}: ")
+    return input(f"Input sentence to {operation_name}: ").upper()
 
 
 def get_shift(operation_name: str) -> int:

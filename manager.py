@@ -58,7 +58,7 @@ class Manager:
         If buffer isn't empty ask user about saving data before quit
         """
         if not utilities.if_buffer_empty():
-            choice = input("You have not saved date in buffer do you want save it? (Y/n)")
+            choice = input("You have not saved date in buffer do you want save it? (Y/n): ")
             if choice.lower() == 'y':
                 return
 
