@@ -1,3 +1,4 @@
 .idea
 Results*
 __pycache__
+*.json

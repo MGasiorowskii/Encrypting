@@ -3,6 +3,7 @@ from utilities import buffer
 from encrypter import Encrypter
 from decrypter import Decrypter
 from fileSaver import FileSaver
+from fileReader import FileReader
 
 
 class Manager:
@@ -15,7 +16,8 @@ class Manager:
             2: self.decrypt_sentence,
             3: self.print_results,
             4: self.save_buffer_to_file,
-            5: self.quit
+            5: self.decrypt_data_from_file,
+            6: self.quit
         }
         self.initialize()
 
@@ -33,7 +35,8 @@ class Manager:
     2. Decrypt the sentence
     3. Show results of operations
     4. Save results to file
-    5. Exit
+    5. Decrypt data from json file
+    6. Exit
         """
         print(menu)
 
@@ -55,7 +58,7 @@ class Manager:
         If buffer isn't empty ask user about saving data before quit
         """
         if not utilities.if_buffer_empty():
-            choice = input("You have not saved date in buffer do you want save it? (Y/n)")
+            choice = input("You have not saved date in buffer do you want save it? (Y/n): ")
             if choice.lower() == 'y':
                 return
 
@@ -70,7 +73,7 @@ class Manager:
         encrypted_sentence = Encrypter.encrypting(original_sentence, shift)
         print(f"Encrypted sentence: {encrypted_sentence}")
 
-        result = utilities.get_last_result(operation_name, shift, original_sentence, encrypted_sentence)
+        result = utilities.create_result_structure(operation_name, shift, original_sentence, encrypted_sentence)
         buffer.append(result)
         utilities.buffer_cleaning()
 
@@ -83,7 +86,7 @@ class Manager:
 
         print(f"Decrypted sentence: {decrypted_sentence}")
 
-        result = utilities.get_last_result(operation_name, shift, original_sentence, decrypted_sentence)
+        result = utilities.create_result_structure(operation_name, shift, original_sentence, decrypted_sentence)
         buffer.append(result)
         utilities.buffer_cleaning()
 
@@ -109,4 +112,20 @@ class Manager:
         content = FileSaver.create_content()
         FileSaver.save_to_file(file_name, content)
         FileSaver.show_message(file_name)
+        utilities.buffer_cleaning()
+
+    def decrypt_data_from_file(self) -> None:
+        """Initialize reading data from json file and save the result to buffer"""
+        operation_name = "Decrypting from file"
+        file_name = FileReader.get_file_name()
+        content_from_file = FileReader.read_file(file_name)
+        if content_from_file == -1:
+            return
+
+        shift, encrypted_sentence = content_from_file.values()
+        decrypted_sentence = Decrypter.decrypting(encrypted_sentence, shift)
+        print(f"Decrypted sentence from file: {decrypted_sentence}")
+
+        result = utilities.create_result_structure(operation_name, shift, encrypted_sentence, decrypted_sentence)
+        buffer.append(result)
         utilities.buffer_cleaning()

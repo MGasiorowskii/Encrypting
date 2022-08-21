@@ -6,7 +6,7 @@ buffer = []
 
 def get_string(operation_name: str) -> str:
     """Get from user string"""
-    return input(f"Input sentence to {operation_name}: ")
+    return input(f"Input sentence to {operation_name}: ").upper()
 
 
 def get_shift(operation_name: str) -> int:
@@ -14,12 +14,12 @@ def get_shift(operation_name: str) -> int:
     return int(input(f"Input shift to {operation_name}: "))
 
 
-def get_last_result(operation_name: str, shift: int, original_sentence: str, new_sentence: str)\
+def create_result_structure(operation_name: str, shift: int, original_sentence: str, new_sentence: str)\
         -> dict[str, Union[str, int]]:
     """Return result of last operation"""
     last_result = {
         "Operation": operation_name,
-        "Key": shift,
+        "Shift": shift,
         "Original_sentence": original_sentence,
         "New_sentence": new_sentence
     }
