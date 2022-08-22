@@ -14,14 +14,12 @@ class Encrypter:
         encrypted_sentence = ""
 
         for letter in original_sentence.upper():
-            if letter != " ":
-                if FIRST_LETTER <= ord(letter) + shift <= LAST_LETTER:
-                    encrypted_sentence += chr(ord(letter) + shift)
-                elif ord(letter) + shift - OFFSET >= FIRST_LETTER:
-                    encrypted_sentence += chr(ord(letter) + shift - OFFSET)
-                else:
-                    encrypted_sentence += letter
+
+            if FIRST_LETTER <= ord(letter) + shift <= LAST_LETTER:
+                encrypted_sentence += chr(ord(letter) + shift)
+            elif ord(letter) + shift - OFFSET >= FIRST_LETTER:
+                encrypted_sentence += chr(ord(letter) + shift - OFFSET)
             else:
-                encrypted_sentence += " "
+                encrypted_sentence += letter
 
         return encrypted_sentence
