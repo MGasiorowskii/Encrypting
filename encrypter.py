@@ -12,11 +12,11 @@ class Encrypter:
         encrypted_sentence = ""
 
         for letter in original_sentence.upper():
-
-            if FIRST_LETTER <= ord(letter) + shift <= LAST_LETTER:
-                encrypted_sentence += chr(ord(letter) + shift)
-            elif ord(letter) + shift - OFFSET >= FIRST_LETTER:
-                encrypted_sentence += chr(ord(letter) + shift - OFFSET)
+            if letter.isalpha():
+                if FIRST_LETTER <= ord(letter) + shift <= LAST_LETTER:
+                    encrypted_sentence += chr(ord(letter) + shift)
+                else :
+                    encrypted_sentence += chr(ord(letter) + shift - OFFSET)
             else:
                 encrypted_sentence += letter
 
