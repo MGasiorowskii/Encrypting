@@ -123,6 +123,9 @@ class Manager:
             return
 
         shift, encrypted_sentence = content_from_file.values()
+        if utilities.if_shift_negative():
+            return
+
         decrypted_sentence = Decrypter.decrypting(encrypted_sentence, shift)
         print(f"Decrypted sentence from file: {decrypted_sentence}")
 
