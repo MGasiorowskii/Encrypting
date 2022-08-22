@@ -17,10 +17,10 @@ class Encrypter:
             if letter != " ":
                 if FIRST_LETTER <= ord(letter) + shift <= LAST_LETTER:
                     encrypted_sentence += chr(ord(letter) + shift)
-                elif FIRST_NUMBER <= ord(letter) <= LAST_NUMBER:
-                    encrypted_sentence += letter
-                else:
+                elif ord(letter) + shift - OFFSET >= FIRST_LETTER:
                     encrypted_sentence += chr(ord(letter) + shift - OFFSET)
+                else:
+                    encrypted_sentence += letter
             else:
                 encrypted_sentence += " "
 
