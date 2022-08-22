@@ -1,4 +1,7 @@
+FIRST_LETTER = 65
 LAST_LETTER = 90
+FIRST_NUMBER = 48
+LAST_NUMBER = 57
 OFFSET = 26
 
 
@@ -12,8 +15,10 @@ class Encrypter:
 
         for letter in original_sentence.upper():
             if letter != " ":
-                if ord(letter) + shift <= LAST_LETTER:
+                if FIRST_LETTER <= ord(letter) + shift <= LAST_LETTER:
                     encrypted_sentence += chr(ord(letter) + shift)
+                elif FIRST_NUMBER <= ord(letter) <= LAST_NUMBER:
+                    encrypted_sentence += letter
                 else:
                     encrypted_sentence += chr(ord(letter) + shift - OFFSET)
             else:
