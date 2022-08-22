@@ -21,14 +21,14 @@ def get_shift(operation_name: str) -> int:
 def create_result_structure(operation_name: str, shift: int, original_sentence: str, new_sentence: str)\
         -> dict[str, Union[str, int]]:
     """Return result of last operation"""
-    last_result = {
+    result = {
         "Operation": operation_name,
         "Shift": shift,
         "Original_sentence": original_sentence,
         "New_sentence": new_sentence
     }
 
-    return last_result
+    return esult
 
 
 def buffer_cleaning() -> None:
