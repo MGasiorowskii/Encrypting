@@ -13,10 +13,11 @@ class Decrypter:
 
         for letter in original_sentence.upper():
 
-            if FIRST_LETTER <= ord(letter) - shift <= LAST_LETTER:
-                decrypted_sentence += chr(ord(letter) - shift)
-            elif FIRST_LETTER <= ord(letter) - shift + OFFSET <= LAST_LETTER:
-                decrypted_sentence += chr(ord(letter) - shift + OFFSET)
+            if letter.isalpha():
+                if FIRST_LETTER <= ord(letter) - shift <= LAST_LETTER:
+                    decrypted_sentence += chr(ord(letter) - shift)
+                else:
+                    decrypted_sentence += chr(ord(letter) - shift + OFFSET)
             else:
                 decrypted_sentence += letter
 
