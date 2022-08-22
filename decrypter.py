@@ -15,7 +15,7 @@ class Decrypter:
 
             if FIRST_LETTER <= ord(letter) - shift <= LAST_LETTER:
                 decrypted_sentence += chr(ord(letter) - shift)
-            elif ord(letter) - shift + OFFSET <= LAST_LETTER:
+            elif FIRST_LETTER <= ord(letter) - shift + OFFSET <= LAST_LETTER:
                 decrypted_sentence += chr(ord(letter) - shift + OFFSET)
             else:
                 decrypted_sentence += letter
