@@ -11,7 +11,11 @@ def get_string(operation_name: str) -> str:
 
 def get_shift(operation_name: str) -> int:
     """Get from user value of shift"""
-    return int(input(f"Input shift to {operation_name}: "))
+
+    while True:
+        shift = int(input(f"Input shift to {operation_name}: "))
+        if not if_shift_negative(shift):
+            return shift
 
 
 def create_result_structure(operation_name: str, shift: int, original_sentence: str, new_sentence: str)\
@@ -38,6 +42,16 @@ def if_buffer_empty() -> bool:
     """Return the status of buffer and print message"""
     if not buffer:
         print("No data in memory")
+        return True
+    else:
+        return False
+
+
+def if_shift_negative(shift: int) -> bool:
+    """Check if shist is negative and print message"""
+
+    if shift < 0:
+        print("Shift can't be negative - try again")
         return True
     else:
         return False
