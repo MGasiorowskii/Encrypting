@@ -60,7 +60,7 @@ def test_should_return_dict_with_value(operation_name, shift, original_sentence,
 
 @pytest.mark.buffer_cleaning
 @pytest.mark.parametrize("user_choice", ['Y'])
-def test_should_pass_for_for_big_letter_yes(monkeypatch, mocker, user_choice):
+def test_should_pass_for_big_letter_yes(monkeypatch, mocker, user_choice):
     monkeypatch.setattr('builtins.input', lambda _: user_choice)
 
     buffer = [{
@@ -80,7 +80,7 @@ def test_should_pass_for_for_big_letter_yes(monkeypatch, mocker, user_choice):
 
 @pytest.mark.buffer_cleaning
 @pytest.mark.parametrize("user_choice", ['y'])
-def test_should_pass_for_for_small_letter_yes(monkeypatch, mocker, user_choice):
+def test_should_pass_for_small_letter_yes(monkeypatch, mocker, user_choice):
     monkeypatch.setattr('builtins.input', lambda _: user_choice)
 
     buffer = [{
@@ -100,7 +100,7 @@ def test_should_pass_for_for_small_letter_yes(monkeypatch, mocker, user_choice):
 
 @pytest.mark.buffer_cleaning
 @pytest.mark.parametrize("user_choice", ['N'])
-def test_should_pass_for_for_big_letter_no(monkeypatch, mocker, user_choice):
+def test_should_pass_for_big_letter_no(monkeypatch, mocker, user_choice):
     monkeypatch.setattr('builtins.input', lambda _: user_choice)
 
     buffer = [{
@@ -120,7 +120,7 @@ def test_should_pass_for_for_big_letter_no(monkeypatch, mocker, user_choice):
 
 @pytest.mark.buffer_cleaning
 @pytest.mark.parametrize("user_choice", ['n'])
-def test_should_pass_for_for_small_letter_no(monkeypatch, mocker, user_choice):
+def test_should_pass_for_small_letter_no(monkeypatch, mocker, user_choice):
     monkeypatch.setattr('builtins.input', lambda _: user_choice)
 
     buffer = [{
