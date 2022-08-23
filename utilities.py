@@ -28,7 +28,7 @@ def create_result_structure(operation_name: str, shift: int, original_sentence: 
         "New_sentence": new_sentence
     }
 
-    return esult
+    return result
 
 
 def buffer_cleaning() -> None:
