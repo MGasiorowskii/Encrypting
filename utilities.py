@@ -20,7 +20,7 @@ def get_shift(operation_name: str) -> int:
 
 def create_result_structure(operation_name: str, shift: int, original_sentence: str, new_sentence: str)\
         -> dict[str, Union[str, int]]:
-    """Return result of last operation"""
+    """Return structure with datas"""
     result = {
         "Operation": operation_name,
         "Shift": shift,
@@ -48,7 +48,7 @@ def if_buffer_empty() -> bool:
 
 
 def if_shift_negative(shift: int) -> bool:
-    """Check if shist is negative and print message"""
+    """Check if shift is negative and print message"""
 
     if shift < 0:
         print("Shift can't be negative - try again")

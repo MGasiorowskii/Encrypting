@@ -144,7 +144,7 @@ def test_should_pass_for_bool_value(capfd, file_name):
 
 @pytest.mark.if_save_all_information
 @pytest.mark.parametrize("user_choice", ['y'])
-def test_should_return_True_for_small_letter_yes(monkeypatch, user_choice):
+def test_should_return_true_for_small_letter_yes(monkeypatch, user_choice):
     monkeypatch.setattr('builtins.input', lambda _: user_choice)
 
     result = FileSaver.if_save_all_information()
@@ -155,7 +155,7 @@ def test_should_return_True_for_small_letter_yes(monkeypatch, user_choice):
 
 @pytest.mark.if_save_all_information
 @pytest.mark.parametrize("user_choice", ['Y'])
-def test_should_return_True_for_big_letter_yes(monkeypatch, user_choice):
+def test_should_return_true_for_big_letter_yes(monkeypatch, user_choice):
     monkeypatch.setattr('builtins.input', lambda _: user_choice)
 
     result = FileSaver.if_save_all_information()
@@ -166,7 +166,7 @@ def test_should_return_True_for_big_letter_yes(monkeypatch, user_choice):
 
 @pytest.mark.if_save_all_information
 @pytest.mark.parametrize("user_choice", ['n'])
-def test_should_return_False_for_small_letter_no(monkeypatch, user_choice):
+def test_should_return_false_for_small_letter_no(monkeypatch, user_choice):
     monkeypatch.setattr('builtins.input', lambda _: user_choice)
 
     result = FileSaver.if_save_all_information()
@@ -177,7 +177,7 @@ def test_should_return_False_for_small_letter_no(monkeypatch, user_choice):
 
 @pytest.mark.if_save_all_information
 @pytest.mark.parametrize("user_choice", ['N'])
-def test_should_return_False_for_big_letter_no(monkeypatch, user_choice):
+def test_should_return_false_for_big_letter_no(monkeypatch, user_choice):
     monkeypatch.setattr('builtins.input', lambda _: user_choice)
 
     result = FileSaver.if_save_all_information()
