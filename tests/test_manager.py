@@ -1,5 +1,5 @@
+import json
 import pytest
-
 import manager
 import utilities
 
@@ -54,6 +54,7 @@ def test_should_pass_for_value_from_out_of_scope(capfd, monkeypatch, user_choice
     result, err = capfd.readouterr()
 
     assert expected == result
+
 
 
 @pytest.mark.quit
@@ -241,8 +242,9 @@ def test_should_pass_if_buffer_is_empty(capfd, mocker, monkeypatch, user_choice,
     assert message == "Decrypted sentence: ABCD\n"
 
 
+
 @pytest.mark.print_results
-def test_should_pass_print_the_content_of_buffer(capfd, mocker, monkeypatch, testing_manager):
+def test_should_print_the_content_of_buffer(capfd, mocker, testing_manager):
 
     buffer = [{
         "Operation": "Decrypting",
@@ -258,13 +260,13 @@ def test_should_pass_print_the_content_of_buffer(capfd, mocker, monkeypatch, tes
     result, err = capfd.readouterr()
 
     expected = "Results of operations:\n\nOperation: Decrypting\nShift: 2\nOriginal_sentence: cdef\nNew_sentence: " \
-               "ABCD\n\n "
+               "ABCD\n\n"
 
     assert expected == result
 
 
 @pytest.mark.print_results
-def test_should_pass_if_buffer_is_empty(capfd, mocker, monkeypatch, testing_manager):
+def test_should_pass_if_buffer_is_empty(capfd, mocker, testing_manager):
 
     buffer = []
     mocker.patch.object(utilities, 'buffer', buffer)
@@ -276,3 +278,77 @@ def test_should_pass_if_buffer_is_empty(capfd, mocker, monkeypatch, testing_mana
     expected = "No data in memory\n"
 
     assert expected == result
+
+
+@pytest.mark.save_buffer_to_file
+def test_should_pass_if_buffer_is_empty(capfd, mocker, testing_manager):
+
+    buffer = []
+    mocker.patch.object(utilities, 'buffer', buffer)
+
+    mngr = testing_manager
+    mngr.save_buffer_to_file()
+    result, err = capfd.readouterr()
+
+    expected = "No data in memory\n"
+
+    assert expected == result
+
+
+@pytest.mark.save_buffer_to_files
+@pytest.mark.parametrize("user_choice", ["n"])
+def test_should_save_the_content_to_file(capfd, mocker, monkeypatch, testing_manager, user_choice):
+    monkeypatch.setattr('builtins.input', lambda _: user_choice)
+
+    def mock_get_create_file_name():
+        return "example_test.json"
+
+    def mock_create_content():
+        return {"Results": ["example"]}
+
+    def mock_if_buffer_empty():
+        return False
+
+    mocker.patch('fileSaver.FileSaver.create_file_name', mock_get_create_file_name)
+    mocker.patch('fileSaver.FileSaver.create_content', mock_create_content)
+    mocker.patch('utilities.if_buffer_empty', mock_if_buffer_empty)
+
+    mngr = testing_manager
+    mngr.save_buffer_to_file()
+    message, err = capfd.readouterr()
+
+    with open("example_test.json", "r", encoding="utf-8") as outfile:
+        result = json.load(outfile)
+
+    expected = {"Results": ["example"]}
+
+    assert expected == result
+    assert message == "Datas has been saved to file example_test.json\n"
+
+
+@pytest.mark.decrypt_data_from_file
+@pytest.mark.parametrize("user_choice", ["n"])
+def test_should_pass_if_decrypted_datas_from_file_are_in_buffer(capfd, mocker, monkeypatch, user_choice, testing_manager):
+    monkeypatch.setattr('builtins.input', lambda _: user_choice)
+
+    def mock_get_file_name():
+        return "text_test.json"
+
+    mocker.patch('fileReader.FileReader.get_file_name', mock_get_file_name)
+
+    expected = {
+        "Operation": "Decrypting from file",
+        "Shift": 2,
+        "Original_sentence": "efgh",
+        "New_sentence": "CDEF"
+    }
+
+    mngr = testing_manager
+    mngr.decrypt_data_from_file()
+    message, err = capfd.readouterr()
+
+    result = utilities.buffer[-1]
+
+    assert expected == result
+    assert message == "Decrypted sentence from file: CDEF\n"
+
