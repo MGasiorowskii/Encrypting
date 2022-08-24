@@ -2,3 +2,5 @@
 Results*
 __pycache__
 *.json
+.coverage
+.pytest_cache
