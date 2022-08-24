@@ -11,6 +11,8 @@ This is script used to encrypt/decrypt sentence by Cesar cypher
 
 ## Key Features
 `Program pattern: Facade`
+`Python: 3.9`
+`Coverage: 71%`
 
 * Encrypt/Decrypt input text
 * Save the results of all operations in buffer to file in JSON format
@@ -45,7 +47,7 @@ $ py -3.9 main.py
 - [x] Show the results of all operations in buffer
 - [x] Clear the buffer with results of operations
 - [x] Read encrypted texts from file
-- [ ] Unit tests
+- [x] Unit tests
 
 > e-mail [gasiorowskii.mateusz@gmail.com](mailto:gasiorowskii.mateusz@gmail.com) &nbsp;&middot;&nbsp;
 > GitHub [@MGasiorowskii](https://github.com/MGasiorowskii) &nbsp;&middot;&nbsp;
