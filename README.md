@@ -22,7 +22,7 @@ This is script used to encrypt/decrypt sentence by Cesar cypher
 * Unit tests
 * Typing
 * Docstrings
-* Format PEP8
+* Format according to PEP8
 
 ## How To Use
 

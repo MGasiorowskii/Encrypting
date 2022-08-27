@@ -24,7 +24,6 @@ class FileReader:
         try:
             with open(file_name) as file:
                 content = json.load(file)
-
         except FileNotFoundError:
             FileReader.show_error(file_name)
             return -1

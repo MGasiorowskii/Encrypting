@@ -41,7 +41,6 @@ class Manager:
         print(menu)
 
     def get_and_execute_choice(self) -> None:
-
         """Get from user information which operation he is interested and execute it
 
         In case of choice the value out of scope show message

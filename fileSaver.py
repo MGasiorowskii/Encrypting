@@ -48,5 +48,4 @@ class FileSaver:
         user_choice = input("Do you want save all information? (Y/n): ")
         if user_choice.lower() == 'y':
             return True
-        else:
-            return False
+        return False
